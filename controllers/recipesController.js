@@ -14,6 +14,26 @@ function recipesController (app){
         res.send({_id: savedRecipe._id})
        })
     })
+
+    app.get('/recipes', function(req, res){
+        Recipe.find({}, function(error, recipes){
+            if(error){
+                res.send({error: "Unable to retrieve recipes"})
+                return
+            }
+            res.send(recipes)
+        })
+    })
+
+    app.get('/recipes/:recipeId', function(req, res){
+        Recipe.findOne({_id:req.params.recipeId}, function(error, recipe){
+            if(error){
+                res.send({error: "Unable to retrieve recipe"})
+                return
+            }
+            res.send(recipe)
+        })
+    })
 }
 
 
