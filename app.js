@@ -18,6 +18,8 @@ mongoose.connect(process.env.DATABASE_URL, {
     useMongoClient: true
 })
 
+require('./controllers/recipesController')(app)
+
 app.listen(3000, function(){
     console.log("Listening on port 3000")
 })

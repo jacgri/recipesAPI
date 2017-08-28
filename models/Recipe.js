@@ -13,3 +13,4 @@ var recipeSchema = new mongoose.Schema({
 var Recipe = mongoose.model('Recipe', recipeSchema)
 
 module.exports = Recipe
+
