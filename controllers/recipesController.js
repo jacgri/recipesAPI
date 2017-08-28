@@ -34,6 +34,17 @@ function recipesController (app){
             res.send(recipe)
         })
     })
+
+      app.put('/recipes/:recipeId', function(req, res){
+       Recipe.update({_id: req.params.recipeId}, {$set:req.body}, function(error, rawResponse){
+           if (error){
+               res.send({error: "Unable to update recipe"})
+
+               return
+           }
+           res.send(rawResponse)
+       }) 
+    })
 }
 
 
